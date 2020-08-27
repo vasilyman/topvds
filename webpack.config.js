@@ -12,7 +12,8 @@ module.exports = {
     vendor: './src/vendor.js',
   },
   output: {
-    publicPath: path.resolve(__dirname, 'dist') + '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/'
+     : path.resolve(__dirname, 'dist') + '/',
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].chunks.js',
