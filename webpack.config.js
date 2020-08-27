@@ -12,7 +12,6 @@ module.exports = {
     vendor: './src/vendor.js',
   },
   output: {
-    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].chunks.js',
@@ -51,7 +50,7 @@ module.exports = {
                 return [
                   require('autoprefixer'),
                 ];
-              }
+              },
             }
           }
         ]
