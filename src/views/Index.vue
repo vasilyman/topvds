@@ -2,7 +2,7 @@
   <div class="section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-12">
+        <div class="col-lg-3 col-md-4 col-12 mb-3">
           <IndexFilters/>
         </div>
         <div class="col-lg-9 col-md-8 col-12">
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 mb-3">
               <IndexFiltersHorizontal :ranges="ranges"/>
             </div>
             <div class="col-12">

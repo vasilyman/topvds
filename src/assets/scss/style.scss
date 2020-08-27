@@ -22,3 +22,20 @@
   max-width: 100%;
   margin-bottom: 5px;
 }
+
+/*w-4 w-sm-3 w-lg-2*/
+.w-4 {
+  width: calc(100% / 12 * 4);
+}
+
+@include media-breakpoint-up(sm) {
+  .w-sm-3 {
+    width: calc(100% / 12 * 3);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .w-lg-2 {
+    width: calc(100% / 12 * 2);
+  }
+}
