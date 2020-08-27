@@ -8,7 +8,7 @@
         </div>
         <div class="col-7">
           <div class="media align-items-center text-left mt-1">
-            <div class="text-primary h4 mb-0 mr-3 p-1 rounded-md shadow">
+            <div class="text-primary h4 mb-0 mr-1">
               <i class="uil uil-file"></i>
             </div>
             <div class="media-body">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="media align-items-center text-left mt-1">
-            <div class="text-primary h4 mb-0 mr-3 p-1 rounded-md shadow">
+            <div class="text-primary h4 mb-0 mr-1">
               <i class="uil uil-file"></i>
             </div>
             <div class="media-body">
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="media align-items-center text-left mt-1">
-            <div class="text-primary h4 mb-0 mr-3 p-1 rounded-md shadow">
+            <div class="text-primary h4 mb-0 mr-1">
               <i class="uil uil-file"></i>
             </div>
             <div class="media-body">
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="media align-items-center text-left mt-1">
-            <div class="text-primary h4 mb-0 mr-3 p-1 rounded-md shadow">
+            <div class="text-primary h4 mb-0 mr-1">
               <i class="uil uil-file"></i>
             </div>
             <div class="media-body">

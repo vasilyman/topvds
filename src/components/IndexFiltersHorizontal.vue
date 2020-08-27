@@ -3,12 +3,11 @@
     <div class="card-header">Фильтры</div>
     <div class="card-body">
       <form id="filters" v-if="json">
-        <div class="row text-center">
+        <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 text-center">
           <div class="col">
             <h6 class="text-primary">Диск</h6>
             <div class="row">
-              <div class="col mb-2">
-                <!-- <VueSlider :min="0" :max="1000" v-model="json.selected.disk_volume_to" /> -->
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.disk_volume_from"
                   :options="json.options.disk_volume_from"
@@ -22,7 +21,7 @@
                   open-direction="bottom"
                 ></multiselect>
               </div>
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.disk_volume_to"
                   :options="json.options.disk_volume_to"
@@ -41,7 +40,7 @@
           <div class="col mb-2">
             <h6 class="text-primary">Память</h6>
             <div class="row">
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.ram_from"
                   :options="json.options.ram_from"
@@ -55,7 +54,7 @@
                   open-direction="bottom"
                 ></multiselect>
               </div>
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.ram_to"
                   :options="json.options.ram_to"
@@ -74,7 +73,7 @@
           <div class="col mb-2">
             <h6 class="text-primary">Частота ядра</h6>
             <div class="row">
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.cpu_freq_from"
                   :options="json.options.cpu_freq_from"
@@ -88,7 +87,7 @@
                   open-direction="bottom"
                 ></multiselect>
               </div>
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.cpu_freq_to"
                   :options="json.options.cpu_freq_to"
@@ -107,7 +106,7 @@
           <div class="col mb-2">
             <h6 class="text-primary">Ядра</h6>
             <div class="row">
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.cpu_cores_from"
                   :options="json.options.cpu_cores_from"
@@ -121,7 +120,7 @@
                   open-direction="bottom"
                 ></multiselect>
               </div>
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.cpu_cores_to"
                   :options="json.options.cpu_cores_to"
@@ -140,7 +139,7 @@
           <div class="col mb-2">
             <h6 class="text-primary">Цена</h6>
             <div class="row">
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.price_from"
                   :options="json.options.price_from"
@@ -154,7 +153,7 @@
                   open-direction="bottom"
                 ></multiselect>
               </div>
-              <div class="col mb-2">
+              <div class="col-12 col-md-6 mb-2">
                 <multiselect
                   v-model="json.selected.price_to"
                   :options="json.options.price_to"
@@ -170,8 +169,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row text-center">
           <div class="col mb-2">
             <h6 class="text-primary">Страна</h6>
             <multiselect
@@ -262,8 +259,6 @@
               open-direction="bottom"
             ></multiselect>
           </div>
-        </div>
-        <div class="row text-center mb-2">
           <div class="col mb-2">
             <h6 class="text-primary">Трафик</h6>
             <multiselect
@@ -316,7 +311,7 @@
             ></multiselect>
           </div>
         </div>
-        <button class="btn btn-warning" @click.prevent="search">ПОДОБРАТЬ</button>
+        <button class="btn btn-warning mt-3" @click.prevent="search">ПОДОБРАТЬ</button>
       </form>
     </div>
   </div>

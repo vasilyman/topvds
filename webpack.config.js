@@ -3,7 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   // mode: 'development',
@@ -61,7 +62,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: 'img/[name].[ext]'
+              name: 'images/[name].[ext]'
             }
           },
         ],
@@ -93,7 +94,13 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: '/css/style.css',
+      filename: 'css/style.css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/images', to: 'images' },
+        { from: 'src/assets/fonts', to: 'fonts' },
+      ],
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',

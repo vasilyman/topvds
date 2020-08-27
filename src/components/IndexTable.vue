@@ -2,7 +2,7 @@
   <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
-        <img src="https://via.placeholder.com/150" class="card-img m-3" alt="">
+        <!-- <img src="https://via.placeholder.com/150" class="card-img m-3" alt=""> -->
       </div>
       <div class="col-md-10">
         <div class="card-body">

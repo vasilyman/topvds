@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "webpack --mode development --watch",
+    "serve": "webpack-dev-server",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,11 +25,12 @@
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "autoprefixer": "^9.8.6",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "vue": "^2.6.12",
     "vue-multiselect": "^2.1.6"
