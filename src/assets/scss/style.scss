@@ -1,12 +1,13 @@
-
+$primary:#6fcc8b;
+$modal-fade-transform: translateX(100%);
 
 @import "~bootstrap/scss/bootstrap";
 @import "@/assets/scss/materialdesignicons.min.scss";
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
-@import "@/assets/scss/theme.scss";
+@import "@/assets/scss/theme/style.scss";
 
-.bg-half-100 {
-  padding: 100px 0;
+.bg-half-60 {
+  padding: 60px 0;
   background-size: cover;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -39,3 +40,55 @@
     width: calc(100% / 12 * 2);
   }
 }
+
+#topnav label {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all .3s ease-in-out;
+}
+
+#topnav label:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+#topnav.nav-sticky label {
+  color: #3c4858;
+}
+
+.accordion .multiselect__content-wrapper {
+  position: relative;
+}
+
+.bg-primary-light {
+  background-color: mix(white,$primary,90%);
+}
+
+.table-card-row {
+  transition: all .3s ease-in-out;
+
+  .table-card-row-more {
+    color: $info;
+    border-color: $info;
+
+    &:hover {
+      color: white;
+      background-color: $info;
+    }
+  }
+
+  &.table-card-row-active {
+    background-color: rgba($primary, 0.2) !important;
+    border: 1px solid rgba($primary, 0.2) !important;
+    color: $primary !important;
+
+    .table-card-row-more {
+      color: $primary;
+      border-color: $primary;
+
+      &:hover {
+        color: white;
+        background-color: $primary;
+      }
+    }
+  }
+}
+  

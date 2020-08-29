@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-12 mb-3">
-          <IndexFilters/>
+          <IndexFilters :ranges="ranges"/>
         </div>
         <div class="col-lg-9 col-md-8 col-12">
           <div class="row">
@@ -18,11 +18,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 mb-3">
+            <div class="col-12 mb-5">
               <IndexFiltersHorizontal :ranges="ranges"/>
             </div>
             <div class="col-12">
-              <IndexTable/>
+              <Table/>
             </div>
           </div>
         </div>

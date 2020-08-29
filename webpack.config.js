@@ -62,7 +62,9 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: 'images/[name].[ext]'
+              name: 'images/[path][name].[ext]',
+              limit: false,
+              esModule: false,
             }
           },
         ],
@@ -73,7 +75,8 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: 'font/[name].[hash:8].[ext]'
+              name: 'font/[path][name].[ext]',
+              limit: false,
             }
           },
         ],
@@ -83,25 +86,33 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/pages/index.html',
+      title: 'Index Page',
+      template: 'src/pages/index.ejs',
       filename: 'index.html',
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
-      template: 'src/pages/vendor.html',
+      title: 'Vendor Page',
+      template: 'src/pages/vendor.ejs',
       filename: 'vendor.html',
+      chunks: ['vendor'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Empty Page',
+      template: 'src/pages/empty.ejs',
+      filename: 'empty.html',
       chunks: ['vendor'],
     }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),
-    new CopyPlugin({
-      patterns: [
-        { from: 'src/assets/images', to: 'images' },
-        { from: 'src/assets/fonts', to: 'fonts' },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+        // { from: 'src/assets/images', to: 'images' },
+        // { from: 'src/assets/fonts', to: 'fonts' },
+    //   ],
+    // }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
