@@ -35,8 +35,11 @@ import Ranges from '@/ranges';
 export default {
   data() {
     return {
-      ranges: Ranges,
+      ranges: {},
     }
   },
+  created() {
+    this.ranges = Ranges;
+  }
 }
 </script>

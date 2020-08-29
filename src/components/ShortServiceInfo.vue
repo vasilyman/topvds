@@ -29,6 +29,7 @@
                 data-toggle="modal"
                 :data-target="`#serviceModal-${service}`"
                 @click="$emit('open-service')"
+                v-show="openServiceButton"
               >Open service</a>
               <a
                 class="btn btn-sm btn-outline-info table-card-row-more mb-1"
@@ -54,6 +55,7 @@ export default {
   props: {
     options: Array,
     service: Number,
+    openServiceButton: Boolean,
   }
 }
 </script>

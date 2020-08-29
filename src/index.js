@@ -1,10 +1,7 @@
 import Vue from 'vue'
-import "@/assets/scss/style.scss";
 import Index from '@/views/Index.vue';
-import '@/assets/js/unicons-2.1.9.bundle.js';
-import '@/assets/js/bootstrap.bundle.min.js';
-import '@/assets/js/theme.js';
 import Multiselect from 'vue-multiselect';
+import "@/common.js";
 
 Vue.component('IndexFilters', () => import(/* webpackChunkName: "IndexFilters" */ '@/components/IndexFilters.vue'));
 Vue.component('IndexFiltersHorizontal', () => import(/* webpackChunkName: "IndexFiltersHorizontal" */ '@/components/IndexFiltersHorizontal.vue'));

@@ -6,7 +6,7 @@
       class="col-12 pt-3 table-card-row"
       :class="index === 2 ? 'table-card-row-active' : ''"
     >
-      <ShortServiceInfo :options="options" :service="index" @open-service="openModal(index)"/>
+      <ShortServiceInfo :options="options" :service="index" :open-service-button="true" @open-service="openModal(index)"/>
     </div>
     <div class="col-12 mt-5">
       <Pagination/>
