@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 $primary:#6fcc8b;
 $modal-fade-transform: translateX(100%);
 
@@ -23,20 +25,19 @@ $modal-fade-transform: translateX(100%);
   margin-bottom: 5px;
 }
 
-/*w-4 w-sm-3 w-lg-2*/
-.w-4 {
-  width: calc(100% / 12 * 4);
-}
-
-@include media-breakpoint-up(sm) {
-  .w-sm-3 {
-    width: calc(100% / 12 * 3);
+@for $size from 1 to 12 {
+  .w-#{$size} {
+    width: calc(100% / 12 * #{$size});
   }
 }
 
-@include media-breakpoint-up(lg) {
-  .w-lg-2 {
-    width: calc(100% / 12 * 2);
+@for $size from 1 to 12 {
+  @each $pbnt in 'xl', 'lg', 'md', 'sm' {
+    @include media-breakpoint-up($pbnt) {
+      .w-#{$pbnt}-#{$size} {
+        width: calc(100% / 12 * #{$size});
+      }
+    }
   }
 }
 

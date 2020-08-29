@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     vendor: './src/vendor.js',
-    empty: './src/empty.js',
+    common: './src/common.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,13 +48,14 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              syntax: 'postcss-scss',
               plugins: function () {
                 return [
                   require('autoprefixer'),
                 ];
               },
             }
-          }
+          },
         ]
       },
       {
@@ -102,7 +103,13 @@ module.exports = {
       title: 'Empty Page',
       template: 'src/pages/empty.ejs',
       filename: 'empty.html',
-      chunks: ['empty'],
+      chunks: ['common'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Coupons Page',
+      template: 'src/pages/coupons.ejs',
+      filename: 'coupons.html',
+      chunks: ['common'],
     }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({

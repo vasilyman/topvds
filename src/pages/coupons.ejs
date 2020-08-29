@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+  </head>
+
+  <body>
+    <%= require('html-loader!../templates/header.ejs') %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title text-center">Coupons</h1>
+        <ul class="list-unstyled">
+          <li class="media align-items-sm-center border rounded p-3 mb-3">
+            <div class="mr-3 icon rounded text-info shadow-lg p-3" alt="logo">
+              <i class="uil uil-tag-alt h1"></i>
+            </div>
+            <div class="media-body">
+              <div class="d-flex justify-content-between align-items-stretch align-items-sm-stretch flex-column flex-sm-row">
+                <div>
+                  <h5 class="mb-1">Discount on 256MB EPYC NAT VPS</h5>
+                  Get any EPYC NAT VPS for around £4.5/year. Valid for all currencies.
+                </div>
+                <div class="mt-2">
+                  <a href="#" class="btn btn-block btn-outline-secondary">Get coupon</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="media align-items-sm-center border rounded p-3 mb-3">
+            <div class="mr-3 icon rounded text-info shadow-lg p-3" alt="logo">
+              <i class="uil uil-tag-alt h1"></i>
+            </div>
+            <div class="media-body">
+              <div class="d-flex justify-content-between align-items-stretch align-items-sm-stretch flex-column flex-sm-row">
+                <div>
+                  <h5 class="mb-1">Discount on 256MB EPYC NAT VPS</h5>
+                  Get any EPYC NAT VPS for around £4.5/year. Valid for all currencies.
+                </div>
+                <div class="mt-2">
+                  <a href="#" class="btn btn-block btn-outline-secondary">Get coupon</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+  </body>
+
+</html>

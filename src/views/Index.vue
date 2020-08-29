@@ -22,7 +22,7 @@
               <IndexFiltersHorizontal :ranges="ranges"/>
             </div>
             <div class="col-12">
-              <Table/>
+              <Table :show-logo="true"/>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <ShortServiceInfo :options="options"/>
+          <ShortServiceInfo :options="options" :show-logo="true"/>
           <div class="row">
             <div class="col-12 col-lg-8">
               <h2 class="text-center">Tariffs</h2>

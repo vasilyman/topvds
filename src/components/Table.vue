@@ -6,7 +6,13 @@
       class="col-12 pt-3 table-card-row"
       :class="index === 2 ? 'table-card-row-active' : ''"
     >
-      <ShortServiceInfo :options="options" :service="index" :open-service-button="true" @open-service="openModal(index)"/>
+      <ShortServiceInfo
+        :options="options"
+        :service="index"
+        :open-service-button="true"
+        :show-logo="showLogo"
+        @open-service="openModal(index)"
+      />
     </div>
     <div class="col-12 mt-5">
       <Pagination/>
@@ -16,6 +22,9 @@
 </template>
 <script>
 export default {
+  props: {
+    showLogo: Boolean,
+  },
   components: {
     'Pagination': () => import(/* webpackChunkName: "Pagination" */ '@/components/Pagination.vue'),
     'Modal': () => import(/* webpackChunkName: "Modal" */ '@/components/Modal.vue'),
@@ -25,20 +34,29 @@ export default {
     return {
       options: [
         {
-          title: '1 core',
+          title: 'Processor',
+          value: '1 core',
           icon: 'uil-processor',
         },
         {
-          title: '1 Gb RAM',
+          title: 'RAM',
+          value: '1 Gb',
           icon: 'uil-sim-card',
         },
         {
-          title: '20 Gb NVMe',
+          title: 'Disk',
+          value: '20 Gb NVMe',
           icon: 'uil-server',
         },
         {
-          title: '32 Tb / 1000 Mbit',
+          title: 'Net',
+          value: '32 Tb / 1000 Mbit',
           icon: 'uil-channel',
+        },
+        {
+          title: 'Price',
+          value: '300 $',
+          icon: 'uil-bill',
         },
       ],
       service: null,

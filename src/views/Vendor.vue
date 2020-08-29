@@ -2,7 +2,7 @@
   <div class="section">
     <div class="container">
       <h1 class="display-4 text-center">Title</h1>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-lg-3 col-md-12 mb-3">
           <div class="d-flex flex-row-reverse flex-lg-column">
             <div class="flex-grow-1 px-3"><h2 class="text-center">Hoster name</h2></div>
@@ -13,7 +13,7 @@
           <div class="mb-5">
             <div class="row">
               <div class="col-lg-12">
-                <ul class="nav nav-pills nav-justified flex-column flex-sm-row rounded" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills nav-justified flex-row rounded" id="pills-tab" role="tablist">
                         
                   <li class="nav-item">
                     <a class="nav-link rounded active" id="pills-smart-tab" data-toggle="pill" href="#pills-smart" role="tab" aria-controls="pills-smart" aria-selected="true">

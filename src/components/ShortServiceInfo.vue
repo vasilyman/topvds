@@ -1,6 +1,6 @@
 <template>
   <div class="h-100 media text-left pb-3 ">
-    <div class="text-primary h4 mb-0 pr-3 w-4 w-sm-3 w-lg-2">
+    <div class="text-primary h4 mb-0 pr-3 w-4 w-sm-3 w-lg-2" v-if="showLogo">
       <img src="https://via.placeholder.com/150" class="card-img mb-2" alt="">
       <h5 class="title text-center">Tarif name</h5>
     </div>
@@ -8,14 +8,17 @@
       class="h-100 media-body pl-3"
     >
       <div class="h-100 d-flex flex-column justify-content-between">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
-          <div class="col" v-for="(option, i) in options" :key="i">
-            <div class="media align-items-center text-left mt-1">
+        <div
+          class="row  row-cols-sm-2 row-cols-lg-3 row-cols-xl-4"
+          :class="showLogo ? 'row-cols-1' : 'row-cols-2'"
+        >
+          <div class="col mb-2" v-for="(option, i) in options" :key="i">
+            <div class="media align-items-center text-left mt-1" data-toggle="tooltip" :title="option.title">
               <div class="text-primary h4 mb-0">
                 <i class="uil" :class="option.icon"></i>
               </div>
               <div class="media-body pl-3">
-                {{option.title}}
+                {{option.value}}
               </div>
             </div>
           </div>
@@ -37,7 +40,9 @@
                 :href="`#collapse-${_uid}`"
                 :aria-controls="`collapse-${_uid}`"
                 @click.prevent=""
-              >More detailed</a>
+              >More detailed
+                <i class="uil uil-angle-down"></i>
+              </a>
             </div>
           </div>
           <div :id="`collapse-${_uid}`" class="collapse" aria-labelledby="headingfifone">
@@ -58,6 +63,7 @@ export default {
     options: Array,
     service: Number,
     openServiceButton: Boolean,
+    showLogo: Boolean,
   }
 }
 </script>
