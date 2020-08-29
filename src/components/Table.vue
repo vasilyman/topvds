@@ -26,15 +26,19 @@ export default {
       options: [
         {
           title: '1 core',
+          icon: 'uil-processor',
         },
         {
           title: '1 Gb RAM',
+          icon: 'uil-sim-card',
         },
         {
           title: '20 Gb NVMe',
+          icon: 'uil-server',
         },
         {
           title: '32 Tb / 1000 Mbit',
+          icon: 'uil-channel',
         },
       ],
       service: null,

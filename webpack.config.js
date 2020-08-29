@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     vendor: './src/vendor.js',
+    empty: './src/empty.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -101,7 +102,7 @@ module.exports = {
       title: 'Empty Page',
       template: 'src/pages/empty.ejs',
       filename: 'empty.html',
-      chunks: ['vendor'],
+      chunks: ['empty'],
     }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({

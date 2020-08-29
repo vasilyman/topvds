@@ -12,7 +12,7 @@
           <div class="col" v-for="(option, i) in options" :key="i">
             <div class="media align-items-center text-left mt-1">
               <div class="text-primary h4 mb-0">
-                <i class="uil uil-file"></i>
+                <i class="uil" :class="option.icon"></i>
               </div>
               <div class="media-body pl-3">
                 {{option.title}}
@@ -25,7 +25,7 @@
             <div class="text-right">
               <a
                 href="#"
-                class="btn btn-sm btn-primary mb-1"
+                class="btn btn-sm btn-soft-primary mb-1 table-card-row-open"
                 data-toggle="modal"
                 :data-target="`#serviceModal-${service}`"
                 @click="$emit('open-service')"
@@ -41,8 +41,10 @@
             </div>
           </div>
           <div :id="`collapse-${_uid}`" class="collapse" aria-labelledby="headingfifone">
-            <div class="py-3">
-              <p class="mb-0 faq-ans">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+            <div class="row py-3">
+              <ul class="col list-unstyled" v-for="(ul, i) in Array(4)" :key="i">
+                <li v-for="(il, ii) in Array(4)" :key="ii"><i class="uil uil-check text-success" ></i> Info</li>
+              </ul>
             </div>
           </div>
         </div>

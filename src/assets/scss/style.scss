@@ -64,6 +64,13 @@ $modal-fade-transform: translateX(100%);
 .table-card-row {
   transition: all .3s ease-in-out;
 
+  &:hover {
+    .table-card-row-open {
+      color: white!important;
+      background-color: $primary!important;
+    }
+  }
+
   .table-card-row-more {
     color: $info;
     border-color: $info;
