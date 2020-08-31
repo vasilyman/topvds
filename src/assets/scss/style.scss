@@ -3,8 +3,11 @@
 $primary:#6fcc8b;
 $modal-fade-transform: translateX(100%);
 
-@import "~bootstrap/scss/bootstrap";
 @import "@/assets/scss/materialdesignicons.min.scss";
+@import "@/assets/scss/owl.carousel.min.scss";
+@import "@/assets/scss/owl.theme.default.min.scss";
+@import "@/assets/scss/owl.transitions.scss";
+@import "~bootstrap/scss/bootstrap";
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
 
 .bg-half-60 {
@@ -25,18 +28,29 @@ $modal-fade-transform: translateX(100%);
   margin-bottom: 5px;
 }
 
-@for $size from 1 to 12 {
+@for $size from 1 to 13 {
   .w-#{$size} {
-    width: calc(100% / 12 * #{$size});
+    width: calc(100% / 12 * #{$size})!important;
+  }
+  .w-max-#{$size} {
+    max-width: calc(100% / 12 * #{$size})!important;
   }
 }
 
-@for $size from 1 to 12 {
+@for $size from 1 to 13 {
   @each $pbnt in 'xl', 'lg', 'md', 'sm' {
     @include media-breakpoint-up($pbnt) {
       .w-#{$pbnt}-#{$size} {
-        width: calc(100% / 12 * #{$size});
+        width: calc(100% / 12 * #{$size})!important;
       }
+    }
+  }
+}
+
+@each $pbnt in 'xl', 'lg', 'md', 'sm' {
+  @include media-breakpoint-up($pbnt) {
+    .w-#{$pbnt}-auto {
+      width: auto!important;
     }
   }
 }
@@ -98,4 +112,15 @@ $modal-fade-transform: translateX(100%);
     }
   }
 }
-  
+
+.vue-range-slider {
+  margin: 40px 15px 0px 15px;
+}
+.vue-range-slider.slider-component .slider .slider-process {
+  background-color: $primary!important;
+}
+
+.vue-range-slider.slider-component .slider-tooltip-wrap .slider-tooltip {
+  border-color: $primary!important;
+  background-color: $primary!important;
+}

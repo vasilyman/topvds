@@ -6,7 +6,7 @@
         <div class="col-lg-3 col-md-12 mb-3">
           <div class="d-flex flex-row-reverse flex-lg-column">
             <div class="flex-grow-1 px-3"><h2 class="text-center">Hoster name</h2></div>
-            <div class=""><img class="w-100" src="https://via.placeholder.com/200" alt="logo"></div>
+            <div class="text-center"><img class="w-max-12" src="https://via.placeholder.com/150" alt="logo"></div>
           </div>
         </div>
         <div class="col-lg-5 col-md-6 col-12 mb-3">

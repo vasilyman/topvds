@@ -55,6 +55,7 @@ export default {
         },
         {
           title: 'Price',
+          name: 'price',
           value: '300 $',
           icon: 'uil-bill',
         },

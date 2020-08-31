@@ -51,8 +51,9 @@ $('#owl-fade').owlCarousel({
 })
 
 
-$('#single-owl').owlCarousel({
+$('.single-owl').owlCarousel({
   loop:true,
+  margin: 16,
   nav: false,
   dots: true,
   autoplay:true,

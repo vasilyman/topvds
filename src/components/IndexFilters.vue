@@ -4,7 +4,7 @@
       <!-- FILTERS -->
       <div class="widget mt-4 pt-2">
         <h4 class="widget-title">Filters</h4>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion faq-content" id="accordionExample">
           <div class="card border-0 rounded mb-2">
             <a data-toggle="collapse" href="#collapseone" class="faq position-relative" aria-expanded="true" aria-controls="collapseone">
               <div class="card-header border-0 bg-light p-3 pr-5" id="headingfifone">
@@ -14,6 +14,7 @@
             <div id="collapseone" class="collapse show" data-parent="#accordionExample">
               <div class="card-body px-2 py-4">
                 <h6 class="mb-3">Диск</h6>
+                <vue-range-slider v-model="disk.value" :min="disk.min" :max="disk.max" ></vue-range-slider>
                 <div class="row mx-n2 mb-3">
                   <div class="col-6 px-2">
                     <multiselect
@@ -335,8 +336,14 @@
   </div>
 </template>
 <script>
+import 'vue-range-component/dist/vue-range-slider.css'
+import VueRangeSlider from 'vue-range-component'
+
 export default {
   name: "filters",
+  components: {
+    VueRangeSlider,
+  },
   props: {
     ranges: Object,
   },
@@ -351,7 +358,12 @@ export default {
         "enable-cross": false,
         dotSize: 17,
         height: 7
-      }
+      },
+      disk: {
+        value: [0, 100],
+        min: 0,
+        max: 100,
+      },
     };
   },
   computed: {

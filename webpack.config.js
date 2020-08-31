@@ -40,7 +40,7 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -72,12 +72,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+        test: /\.(woff|woff2|eot|ttf|otf)(\?.*)?$/i,
         use: [
           {
             loader: 'url-loader',
             options: {
-              name: 'font/[path][name].[ext]',
+              name: 'font/[name].[ext]',
+              publicPath: "../",
               limit: false,
             }
           },
@@ -124,8 +125,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
+      'window.jQuery': 'jquery',
       feather: '@/assets/js/feather.min.js',
-      // bootstrap: '@/assets/js/bootstrap.bundle.min.js'
     }),
   ]
 }

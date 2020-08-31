@@ -3,10 +3,10 @@
     <div class="card-body p-3">
       <h4 class="card-title">Hosting name</h4>
       <div class="row no-gutters">
-        <div class="col-5 pr-3">
-          <img class="card-img" src="https://via.placeholder.com/120" alt="">
+        <div class="col pr-3 w-max-4 w-sm-auto">
+          <img class="card-img w-100" src="https://via.placeholder.com/150" alt="">
         </div>
-        <div class="col-7">
+        <div class="col ">
           <div class="media align-items-center text-left mt-1">
             <div class="text-primary h4 mb-0 mr-1">
               <i class="uil uil-file"></i>

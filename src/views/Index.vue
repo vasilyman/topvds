@@ -7,14 +7,8 @@
         </div>
         <div class="col-lg-9 col-md-8 col-12">
           <div class="row">
-            <div class="col-lg-4 col-sm-12 mb-3">
+            <div class="col-lg-4 col-sm-12 mb-3" v-for="(item, i) in Array(3)" :key="i">
               <IndexHostInfo/>
-            </div>
-            <div class="col-lg-4 col-6 mb-3">
-              <Index2ndBlock/>
-            </div>
-            <div class="col-lg-4 col-6">
-              <Index3rdBlock/>
             </div>
           </div>
           <div class="row">
