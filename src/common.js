@@ -40,8 +40,8 @@ if (mode === 'dark') {
 
 $( document ).ready(function() {
   $( '.coupon-block button' ).click((e) => {
-    const code = $(e.target).parent().parent().find('.coupon-code').text();
-    navigator.clipboard.writeText(code);
-    console.log(code);
+    const el = $(e.target).parent().parent().find('.coupon-code');
+    navigator.clipboard.writeText(el);
+    console.log(el, el.text());
   })
 });
