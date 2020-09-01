@@ -41,7 +41,8 @@ if (mode === 'dark') {
 $( document ).ready(function() {
   $( '.coupon-block button' ).click((e) => {
     const el = $(e.target).parent().parent().find('.coupon-code');
-    navigator.clipboard.writeText(el);
+    
     console.log(el, el.text());
+    navigator.clipboard.writeText(el);
   })
 });
