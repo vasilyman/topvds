@@ -11,6 +11,7 @@
         :service="index"
         :open-service-button="true"
         :show-logo="showLogo"
+        :rows="4"
         @open-service="openModal(index)"
       />
     </div>

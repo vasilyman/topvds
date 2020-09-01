@@ -2,7 +2,7 @@
   <div>
     <div class="h-100 media text-left pb-3 ">
       <div class="text-primary h4 mb-0 pr-3 w-max-4 w-sm-auto" v-if="showLogo">
-        <img src="https://via.placeholder.com/150" class="w-100 mb-2" alt="">
+        <img src="https://via.placeholder.com/150x70" class="w-100 mb-2" alt="">
         <h5 class="title text-center">Tarif name</h5>
       </div>
       <div
@@ -11,15 +11,18 @@
         <div class="h-100 d-flex flex-column flex-lg-row justify-content-between">
           <div class="d-flex flex-grow-1 flex-column">
             <div
-              class="row  row-cols-sm-2 row-cols-lg-3 row-cols-xl-5"
-              :class="showLogo ? 'row-cols-1' : 'row-cols-2'"
+              class="row mx-n1 row-cols-sm-2 row-cols-lg-3 "
+              :class="[
+                showLogo ? 'row-cols-1' : 'row-cols-2',
+                `row-cols-xl-${rows}`,
+              ]"
             >
-              <div class="col mb-2" v-for="(option, i) in options" :key="i">
+              <div class="col px-1 mb-2" v-for="(option, i) in options.slice(0, rows)" :key="i">
                 <div class="media align-items-center flex-row flex-xl-column text-left mt-1" data-toggle="tooltip" :title="option.title">
                   <div class="text-primary h4 mb-0">
                     <i class="uil" :class="option.icon"></i>
                   </div>
-                  <div class="media-body text-xl-center pl-3 px-xl-0">
+                  <div class="media-body text-xl-center pl-3 px-xl-0" style="font-size: 0.9rem;">
                     {{option.value}}
                   </div>
                 </div>
@@ -76,6 +79,10 @@ export default {
     service: Number,
     openServiceButton: Boolean,
     showLogo: Boolean,
+    rows: {
+      type: Number,
+      default: 5,
+    },
   }
 }
 </script>
