@@ -11,15 +11,15 @@
         <div class="h-100 d-flex flex-column flex-lg-row justify-content-between">
           <div class="d-flex flex-grow-1 flex-column">
             <div
-              class="row  row-cols-sm-2 row-cols-lg-3 row-cols-xl-4"
+              class="row  row-cols-sm-2 row-cols-lg-3 row-cols-xl-5"
               :class="showLogo ? 'row-cols-1' : 'row-cols-2'"
             >
               <div class="col mb-2" v-for="(option, i) in options" :key="i">
-                <div class="media align-items-center text-left mt-1" data-toggle="tooltip" :title="option.title">
+                <div class="media align-items-center flex-row flex-xl-column text-left mt-1" data-toggle="tooltip" :title="option.title">
                   <div class="text-primary h4 mb-0">
                     <i class="uil" :class="option.icon"></i>
                   </div>
-                  <div class="media-body pl-3">
+                  <div class="media-body text-xl-center pl-3 px-xl-0">
                     {{option.value}}
                   </div>
                 </div>

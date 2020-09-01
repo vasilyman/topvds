@@ -37,3 +37,11 @@ if (mode === 'dark') {
 } else {
   import('@/assets/scss/theme/style.scss');
 }
+
+$( document ).ready(function() {
+  $( '.coupon-block button' ).click((e) => {
+    const code = $(e.target).parent().parent().find('.coupon-code').text();
+    navigator.clipboard.writeText(code);
+    console.log(code);
+  })
+});
