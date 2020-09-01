@@ -5,329 +5,168 @@
       <div class="widget mt-4 pt-2">
         <h4 class="widget-title">Filters</h4>
         <div class="accordion faq-content" id="accordionExample">
-          <div class="card border-0 rounded mb-2">
-            <a data-toggle="collapse" href="#collapseone" class="faq position-relative" aria-expanded="true" aria-controls="collapseone">
-              <div class="card-header border-0 bg-light p-3 pr-5" id="headingfifone">
-                <h6 class="title mb-0">Set one</h6>
+          <template v-for="(control, i) in [
+              {
+                title: 'Диск',
+                key: 'disk_volume_from',
+                key2: 'disk_volume_to',
+              },
+              {
+                title: 'Память',
+                key: 'ram_from',
+                key2: 'ram_to',
+              },
+              {
+                title: 'Частота ядра',
+                key: 'cpu_freq_from',
+                key2: 'cpu_freq_to',
+              },
+              {
+                title: 'Ядра',
+                key: 'cpu_cores_from',
+                key2: 'cpu_cores_to',
+              },
+              {
+                title: 'Цена',
+                key: 'price_from',
+                key2: 'price_to',
+              },
+              {
+                title: 'Трафик',
+                key: 'bandwidth_limit',
+              },
+            ]">
+            <div class="card border-0 rounded mb-2" :key="`${control.key}`">
+              <a data-toggle="collapse" :href="`#option-slider-${i}`" class="faq position-relative collapsed" :aria-controls="`option-slider-${i}`">
+                <div class="card-header border-0 bg-light p-3 pr-5">
+                  <h6 class="title mb-0">{{control.title}}</h6>
+                </div>
+              </a>
+              <div
+                :id="`option-slider-${i}`"
+                class="collapse"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body px-2 py-4">
+                  <vue-slider
+                    v-if="'key2' in control"
+                    :value="[
+                      Number.parseInt(json.selected[control.key] || min(json.options[control.key])),
+                      Number.parseInt(json.selected[control.key2] || max(json.options[control.key2]))
+                    ]"
+                    :tooltip-formatter="(v) => getOptionNameByValue(control.key, Number.parseInt(v)) || v"
+                    :adsorb="true"
+                    :data="json.options[control.key].map(el => Number.parseInt(el.value))"
+                    :min="min(json.options[control.key])"
+                    :max="max(json.options[control.key2])"
+                    :lazy="true"
+                    :duration="0"
+                    @change="(value, index) => {
+                      $set(json, 'selected', {
+                        ...json.selected,
+                        [control.key]: value[0],
+                        [control.key2]: value[1],
+                      })
+                    }"
+                    :tooltip="'always'"
+                    :enable-cross="false">
+                  </vue-slider>
+                  <vue-slider
+                    v-else
+                    :value="Number.parseInt(json.selected[control.key] || min(json.options[control.key]))"
+                    :tooltip-formatter="(v) => getOptionNameByValue(control.key, Number.parseInt(v)) || v"
+                    :adsorb="true"
+                    :data="json.options[control.key].map(el => Number.parseInt(el.value))"
+                    :min="min(json.options[control.key])"
+                    :max="max(json.options[control.key])"
+                    :lazy="true"
+                    :duration="0"
+                    @change="(value, index) => {
+                      $set(json, 'selected', {
+                        ...json.selected,
+                        [control.key]: value,
+                      })
+                    }"
+                    :tooltip="'always'"
+                    :enable-cross="false">
+                  </vue-slider>
+                </div>
               </div>
-            </a>
-            <div id="collapseone" class="collapse show" data-parent="#accordionExample">
-              <div class="card-body px-2 py-4">
-                <h6 class="mb-3">Диск</h6>
-                <vue-range-slider v-model="disk.value" :min="disk.min" :max="disk.max" ></vue-range-slider>
-                <div class="row mx-n2 mb-3">
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.disk_volume_from"
-                      :options="json.options.disk_volume_from"
-                      placeholder="От"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.disk_volume_to"
-                      :options="json.options.disk_volume_to"
-                      placeholder="До"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
+              <div class="card-footer" v-if="control.key in json.selected">
+                <small class="text-muted" v-if="'key2' in control">
+                  {{getOptionNameFromSelected(control.key) || json.selected[control.key]}} -
+                  {{getOptionNameFromSelected(control.key2) || json.selected[control.key2]}}
+                </small>
+                <small class="text-muted" v-else>
+                  {{getOptionNameFromSelected(control.key) || json.selected[control.key]}}
+                </small>
+              </div>
+            </div>
+          </template>
+          <template v-for="(control, i) in [
+              {
+                title: 'Страна',
+                key: 'location',
+              },
+              {
+                title: 'Виртуализация',
+                key: 'vz',
+              },
+              {
+                title: 'Тип диска',
+                key: 'disk_type',
+              },
+              {
+                title: 'ОС',
+                key: 'os',
+              },
+              {
+                title: 'Способ оплаты',
+                key: 'payment_type',
+              },
+              {
+                title: 'Канал',
+                key: 'bandwidth',
+              },
+              {
+                title: 'Администрирование',
+                key: 'managed',
+              },
+            ]">
+            <div class="card border-0 rounded mb-2" :key="`${control.key}`">
+              <a data-toggle="collapse" :href="`#option-select-${i}`" class="faq position-relative collapsed" :aria-controls="`option-select-${i}`">
+                <div class="card-header border-0 bg-light p-3 pr-5" >
+                  <h6 class="title mb-0">{{control.title}}</h6>
                 </div>
-                <h6 class="">Память</h6>
-                <div class="row mx-n2 mb-3">
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.ram_from"
-                      :options="json.options.ram_from"
-                      placeholder="От"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.ram_to"
-                      :options="json.options.ram_to"
-                      placeholder="До"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
+              </a>
+              <div :id="`option-select-${i}`" class="collapse" data-parent="#accordionExample">
+                <div class="card-body px-2 py-4">
+                  <multiselect
+                    class="mb-3"
+                    v-model="json.selected[control.key]"
+                    :options="json.options[control.key]"
+                    :placeholder="control.title"
+                    :showLabels="false"
+                    tag-placeholder="Add this as new tag"
+                    :searchable="false"
+                    :hideSelected="true"
+                    :close-on-select="false"
+                    label="name"
+                    track-by="value"
+                    :multiple="true"
+                    :taggable="false"
+                    open-direction="bottom"
+                  ></multiselect>
                 </div>
-                <h6 class="">Частота ядра</h6>
-                <div class="row mx-n2 mb-3">
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.cpu_freq_from"
-                      :options="json.options.cpu_freq_from"
-                      placeholder="От"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.cpu_freq_to"
-                      :options="json.options.cpu_freq_to"
-                      placeholder="До"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                </div>
-                <h6 class="">Ядра</h6>
-                <div class="row mx-n2 mb-3">
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.cpu_cores_from"
-                      :options="json.options.cpu_cores_from"
-                      placeholder="От"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.cpu_cores_to"
-                      :options="json.options.cpu_cores_to"
-                      placeholder="До"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
+              </div>
+              <div class="card-footer" v-if="control.key in json.selected">
+                <div class="">
+                  <span class="badge badge-outline-secondary mr-2 mb-2" v-for="(badge, ii) in json.selected[control.key]" :key="ii">{{badge.name}}</span>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="card border-0 rounded mb-2">
-            <a data-toggle="collapse" href="#collapsetwo" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsetwo">
-              <div class="card-header border-0 bg-light p-3 pr-5" >
-                <h6 class="title mb-0">Set two</h6>
-              </div>
-            </a>
-            <div id="collapsetwo" class="collapse" data-parent="#accordionExample">
-              <div class="card-body px-2 py-4">
-                <h6 class="">Цена</h6>
-                <div class="row mx-n2 mb-3">
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.price_from"
-                      :options="json.options.price_from"
-                      placeholder="От"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                  <div class="col-6 px-2">
-                    <multiselect
-                      v-model="json.selected.price_to"
-                      :options="json.options.price_to"
-                      placeholder="До"
-                      :showLabels="false"
-                      tag-placeholder="Add this as new tag"
-                      :searchable="false"
-                      label="name"
-                      track-by="value"
-                      :taggable="false"
-                      open-direction="bottom"
-                    ></multiselect>
-                  </div>
-                </div>
-                <h6 class="">Страна</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.location"
-                  :options="json.options.location"
-                  placeholder="Местоположение"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Виртуализация</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.vz"
-                  :options="json.options.vz"
-                  placeholder="Виртуализация"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Тип диска</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.disk_type"
-                  :options="json.options.disk_type"
-                  placeholder="Тип диска"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-              </div>
-            </div>
-          </div>
-          <div class="card border-0 rounded mb-2">
-            <a data-toggle="collapse" href="#collapsethree" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
-              <div class="card-header border-0 bg-light p-3 pr-5" id="headingthree">
-                <h6 class="title mb-0">Set three</h6>
-              </div>
-            </a>
-            <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExample">
-              <div class="card-body px-2 py-4">
-                <h6 class="">ОС</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.os"
-                  :options="json.options.os"
-                  placeholder="Образы системы"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Способ оплаты</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.payment_type"
-                  :options="json.options.payment_type"
-                  placeholder="Способ оплаты"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Трафик</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.bandwidth_limit"
-                  :options="json.options.bandwidth_limit"
-                  placeholder="Лимит трафика"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  label="name"
-                  track-by="value"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Канал</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.bandwidth"
-                  :options="json.options.bandwidth"
-                  placeholder="Скорость канала"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-                <h6 class="">Администрирование</h6>
-                <multiselect
-                  class="mb-3"
-                  v-model="json.selected.managed"
-                  :options="json.options.managed"
-                  placeholder="Администрирование"
-                  :showLabels="false"
-                  tag-placeholder="Add this as new tag"
-                  :searchable="false"
-                  :hideSelected="true"
-                  :close-on-select="false"
-                  label="name"
-                  track-by="value"
-                  :multiple="true"
-                  :taggable="false"
-                  open-direction="bottom"
-                ></multiselect>
-              </div>
-            </div>
-          </div>
-      </div>
+          </template>
+        </div>
         <button class="btn btn-block btn-primary mt-2" @click.prevent="search">ПОДОБРАТЬ</button>
         <a href="javascript:void(0)" class="btn btn-block btn-light mt-2">СБРОСИТЬ</a>
       </div>
@@ -336,13 +175,12 @@
   </div>
 </template>
 <script>
-import 'vue-range-component/dist/vue-range-slider.css'
-import VueRangeSlider from 'vue-range-component'
+import VueSlider from 'vue-slider-component'
 
 export default {
   name: "filters",
   components: {
-    VueRangeSlider,
+    VueSlider,
   },
   props: {
     ranges: Object,
@@ -481,6 +319,20 @@ export default {
     console.log(this.json);
   },
   methods: {
+    min(nums) {
+      return Math.min(...nums.map((el) => Number.parseInt(el.value)).filter((el) => !Number.isNaN(el)));
+    },
+    max(nums) {
+      return Math.max(...nums.map((el) => Number.parseInt(el.value)).filter((el) => !Number.isNaN(el)));
+    },
+    getOptionNameFromSelected(key) {
+      return this.getOptionNameByValue(key, this.json.selected[key])
+    },
+    getOptionNameByValue(key, val) {
+      const filtered = this.json.options[key]
+        .filter(el => el.value === val)[0]
+      return filtered ? filtered.name : false;
+    },
     countryChange(show, value) {
       console.log('change', show, value)
       if (!this.json.selected.location) this.json.selected.location = [];
@@ -590,3 +442,14 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  /* Set the theme color of the component */
+  $themeColor: #6fcc8b;
+
+  /* import theme style */
+  @import '~vue-slider-component/lib/theme/default.scss';
+
+  .vue-slider {
+    margin: 35px 25px 0px 25px;
+  }
+</style>

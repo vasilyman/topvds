@@ -13,26 +13,28 @@
           <div class="row">
             <div class="col-12 col-lg-8">
               <h2 class="text-center">Tariffs</h2>
-              <table class="table">
-                <thead class="bg-dark text-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Cores</th>
-                    <th scope="col">RAM</th>
-                    <th scope="col">Disk</th>
-                  </tr>
-                </thead>
-                <tbody class="text-dark">
-                  <tr v-for="(row, i) in Array(4)" :key="i">
-                    <th scope="row">{{i+1}}</th>
-                    <td>Name tariff {{i+1}}</td>
-                    <td>200</td>
-                    <td>200</td>
-                    <td>200</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="bg-dark text-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Cores</th>
+                      <th scope="col">RAM</th>
+                      <th scope="col">Disk</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-dark">
+                    <tr v-for="(row, i) in Array(4)" :key="i">
+                      <th scope="row">{{i+1}}</th>
+                      <td>Name tariff {{i+1}}</td>
+                      <td>200</td>
+                      <td>200</td>
+                      <td>200</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div class="col-12 col-lg-4">
               <div class="card bg-light rounded shadow border-0">

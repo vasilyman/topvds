@@ -9,7 +9,7 @@
         class="h-100 media-body pl-3"
       >
         <div class="h-100 d-flex flex-column flex-lg-row justify-content-between">
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-grow-1 flex-column">
             <div
               class="row  row-cols-sm-2 row-cols-lg-3 row-cols-xl-4"
               :class="showLogo ? 'row-cols-1' : 'row-cols-2'"
