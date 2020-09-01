@@ -43,6 +43,14 @@ $( document ).ready(function() {
     const el = $(e.target).parent().parent().find('.coupon-code');
     
     console.log(el, el.text());
-    navigator.clipboard.writeText(el);
+
+    navigator.permissions.query({
+      name: 'clipboard-write'
+    }).then(permissionStatus => {
+      // Will be 'granted', 'denied' or 'prompt':
+      if (permissionStatus.state !== 'denied' ) {
+        navigator.clipboard.writeText(el.text());
+      }
+    });
   })
 });
