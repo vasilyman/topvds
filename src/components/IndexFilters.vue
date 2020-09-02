@@ -175,7 +175,8 @@
   </div>
 </template>
 <script>
-import VueSlider from 'vue-slider-component'
+import VueSlider from 'vue-slider-component';
+import axios from 'axios';
 
 export default {
   name: "filters",
@@ -394,7 +395,7 @@ export default {
       console.log(query);
       var query_string = "?" + $.param(query);
       axios
-        .get("/" + query_string + "&timestamp=" + new Date().getTime())
+        .get("http://topvds.ru/" + query_string + "&timestamp=" + new Date().getTime())
         .then(response => {
           window.stats_data = response.data.stats;
           window.stats_data.type = "show";

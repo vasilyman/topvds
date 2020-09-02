@@ -8,7 +8,45 @@
   </head>
   <body>
     <%= require('html-loader!../templates/header.ejs') %>
-    <div id="app"></div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-12 mb-3">
+            <div id="app"></div>
+          </div>
+          <div class="col-lg-9 col-md-8 col-12">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12 mb-3">
+                <%= require('html-loader!../templates/IndexHostInfo.ejs') %>
+              </div>
+              <div class="col-lg-4 col-sm-12 mb-3">
+                <%= require('html-loader!../templates/IndexHostInfo.ejs') %>
+              </div>
+              <div class="col-lg-4 col-sm-12 mb-3">
+                <%= require('html-loader!../templates/IndexHostInfo.ejs') %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-5">
+                <%= require('html-loader!../templates/IndexFiltersHorizontal.ejs') %>
+              </div>
+              <div class="col-12">
+                <div id="head"></div>
+                <nav>
+                  <ul class="pagination"></ul>
+                </nav>
+                <div class="tarif-list" id="tarif-block"></div>
+                  <table id="tarif-list" class="table table-hover table-striped">
+                    <!-- <x-tarif-list :tarifs="$tarifs" /> -->
+                  </table>
+                  <!-- {{$tarifs->appends(request()->query())->links()}} -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= require('html-loader!../templates/footer.ejs') %>
   </body>
 </html>

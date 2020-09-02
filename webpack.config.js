@@ -10,7 +10,6 @@ module.exports = {
   // mode: 'development',
   entry: {
     index: './src/index.js',
-    vendor: './src/vendor.js',
     common: './src/common.js',
   },
   output: {
@@ -98,7 +97,7 @@ module.exports = {
       title: 'Vendor Page',
       template: 'src/pages/vendor.ejs',
       filename: 'vendor.html',
-      chunks: ['vendor'],
+      chunks: ['common'],
     }),
     new HtmlWebpackPlugin({
       title: 'Empty Page',
