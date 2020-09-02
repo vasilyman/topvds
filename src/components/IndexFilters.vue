@@ -395,7 +395,7 @@ export default {
       console.log(query);
       var query_string = "?" + $.param(query);
       axios
-        .get("http://topvds.ru/" + query_string + "&timestamp=" + new Date().getTime())
+        .get("https://topvds.ru/" + query_string + "&timestamp=" + new Date().getTime())
         .then(response => {
           window.stats_data = response.data.stats;
           window.stats_data.type = "show";
