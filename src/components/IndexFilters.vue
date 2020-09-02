@@ -136,7 +136,10 @@
             <div class="card border-0 rounded mb-2" :key="`${control.key}`">
               <a data-toggle="collapse" :href="`#option-select-${i}`" class="faq position-relative collapsed" :aria-controls="`option-select-${i}`">
                 <div class="card-header border-0 bg-light p-3 pr-5" >
-                  <h6 class="title mb-0">{{control.title}}</h6>
+                  <h6
+                    class="title mb-0"
+                    :class="{ 'text-primary': json.selected[control.key] }"
+                  >{{control.title}}</h6>
                 </div>
               </a>
               <div :id="`option-select-${i}`" class="collapse" data-parent="#accordionExample">
@@ -159,11 +162,11 @@
                   ></multiselect>
                 </div>
               </div>
-              <div class="card-footer" v-if="control.key in json.selected">
+              <!-- <div class="card-footer" v-if="control.key in json.selected">
                 <div class="">
                   <span class="badge badge-outline-secondary mr-2 mb-2" v-for="(badge, ii) in json.selected[control.key]" :key="ii">{{badge.name}}</span>
                 </div>
-              </div>
+              </div> -->
             </div>
           </template>
         </div>
